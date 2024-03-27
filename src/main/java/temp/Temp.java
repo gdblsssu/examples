@@ -4,32 +4,26 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Temp {
-    public static int firstMissingPositive(int[] nums) {
+    public static int numSubarrayProductLessThanK(int[] nums, int k) {
+        if(k <= 1) return 0;
 
-        int i = 0;
-        while(i < nums.length){
-            int correctInd = nums[i] - 1;
-            if(nums[i] > 0 && nums[i] <= nums.length && nums[i] != nums[correctInd])
-                swap(nums, i, correctInd);
-            else
-                i++;
+        int res = 0;
+        int product = 1;
+        for(int l = 0, r = 0; r < nums.length; r++){
+            product *= nums[r];
+
+            while(product > k){
+                product /= nums[l++];
+            }
+
+            res += r - l + 1;
         }
 
-        for(i = 0; i < nums.length; i++){
-            if(nums[i] != i + 1) return i + 1;
-        }
-
-        return nums.length + 1;
-    }
-
-    private static void swap(int[] arr, int ind1, int ind2){
-        int temp = arr[ind1];
-        arr[ind2] = arr[ind1];
-        arr[ind2] = temp;
+        return res;
     }
 
 
     public static void main(String[] args) {
-        firstMissingPositive(new int[]{3, 4, -1, 1});
+        numSubarrayProductLessThanK(new int[]{10, 5, 2, 6}, 100);
     }
 }
