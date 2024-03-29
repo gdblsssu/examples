@@ -1,5 +1,6 @@
 package streamApi;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,13 +59,19 @@ public class Example {
                 .orElse(0);
         System.out.println(max);*/
 
-        // Write a Java program to find the second smallest and largest elements in a list of integers using streams.
+        /*// Write a Java program to find the second smallest and largest elements in a list of integers using streams.
         int second = listInt.stream()
                 .sorted()
                 .skip(1)
                 .limit(1)
                 .findFirst()
                 .orElse(0);
-        System.out.println(second);
+        System.out.println(second); */
+
+        //find the maximum element in an array
+        int[] arr = new int[]{3, 1, 3, 5, 5};
+        int max = Arrays.stream(arr).max().getAsInt();
+        System.out.println(max);
+
     }
 }

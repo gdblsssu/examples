@@ -4,26 +4,27 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Temp {
-    public static int numSubarrayProductLessThanK(int[] nums, int k) {
-        if(k <= 1) return 0;
-
+    public static long countSubarrays(int[] nums, int k) {
+        int count = 0;
         int res = 0;
-        int product = 1;
-        for(int l = 0, r = 0; r < nums.length; r++){
-            product *= nums[r];
+        int max = Arrays.stream(nums).max().getAsInt();
 
-            while(product > k){
-                product /= nums[l++];
+        for(int l = -1, r = 0; r < nums.length; r++){
+            if(nums[r] == max) count++;
+            if(count >= k) res++;
+
+            while(count > k){
+                l++;
+                if(nums[l] == max) count--;
             }
-
-            res += r - l + 1;
         }
 
         return res;
+
     }
 
 
     public static void main(String[] args) {
-        numSubarrayProductLessThanK(new int[]{10, 5, 2, 6}, 100);
+        System.out.println("<i> asd </i>");
     }
 }
