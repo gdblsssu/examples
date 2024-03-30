@@ -1,4 +1,4 @@
-package temp;
+package DesignPatterns.Structural.Decorator;
 
 public class SimpleTextEditor implements TextEditor {
     private String text = "";

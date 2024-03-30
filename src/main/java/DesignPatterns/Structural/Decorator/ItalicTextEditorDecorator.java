@@ -1,4 +1,4 @@
-package temp;
+package DesignPatterns.Structural.Decorator;
 
 public class ItalicTextEditorDecorator extends TextEditorDecorator {
     public ItalicTextEditorDecorator(TextEditor textEditor) {

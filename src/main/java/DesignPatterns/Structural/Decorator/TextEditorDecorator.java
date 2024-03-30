@@ -1,4 +1,4 @@
-package temp;
+package DesignPatterns.Structural.Decorator;
 
 public abstract class TextEditorDecorator implements TextEditor {
     TextEditor textEditor;
