@@ -35,6 +35,7 @@ public class Temp {
 
 
     public static void main(String[] args) {
-        subarraysWithKDistinct(new int[]{1, 2, 1, 3, 4}, 2);
+
+        System.out.println(Character.toLowerCase('A') == Character.toLowerCase('a'));
     }
 }
