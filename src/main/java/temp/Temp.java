@@ -4,38 +4,37 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Temp {
-    public static int subarraysWithKDistinct(int[] nums, int k) {
-        int[] dif = new int[nums.length + 1];
-        int res = 0;
-        int cur = 0;
+    public static int countStudents(int[] students, int[] sandwiches) {
+        LinkedList<Integer> que = new LinkedList<>();
 
-        for(int l = 0, r = 0; r < nums.length; r++){
-            if(dif[nums[r]]++ == 0){
-                k--;
-            }
+        for(int i: students)
+            que.add(i);
 
-            if(k < 0){
-                --dif[nums[l++]];
-                k++;
-                cur = 0;
-            }
-
-            if(k == 0){
-                while(dif[nums[l]] > 1){
-                    --dif[nums[l++]];
-                    cur++;
+        int i = 0;
+        while(i < sandwiches.length){
+            int sizeQ = que.size();
+            for(int j = 0; j < sizeQ; j++){
+                int front = que.poll();
+                if(front == sandwiches[i]){
+                    i++;
+                    break;
                 }
+                else
+                    que.addLast(front);
             }
 
-            res += (cur + 1);
+            if(sizeQ == que.size())
+                break;
+
         }
 
-        return res;
+        return que.size();
+
     }
 
 
     public static void main(String[] args) {
 
-        System.out.println(Character.toLowerCase('A') == Character.toLowerCase('a'));
+        countStudents(new int[]{1, 1, 0, 0}, new int[]{0, 1, 0, 1});
     }
 }
